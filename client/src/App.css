@@ -1,0 +1,73 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.customerinfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.customerinfo input {
+  width: 300px;
+  height: 25px;
+  font-size: 15px;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+
+.customerinfo button {
+  width: 200px;
+  height: 50px;
+  margin-top: 15px;
+}
+
+.customerinfo button:hover {
+  cursor: pointer;
+}
+
+.roleDistribution button {
+  width: 200px;
+  height: 50px;
+  margin-top: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.roleDistribution button:hover {
+  cursor: pointer;
+}
+
+
+.roles {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  margin-top: 15px;
+  /* border: 2px solid forestgreen; */
+  border-collapse: collapse;
+  width: 800px;
+  height: 200px;
+} 
+
+th {
+  border-bottom: 2px solid black;
+  border: 1px solid black;
+  background-color: lightgray;
+}
+
+td {
+  text-align: center;
+  border: 1px solid black;
+}
