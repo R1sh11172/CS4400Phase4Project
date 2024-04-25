@@ -1,6 +1,12 @@
 import './App.css';
 import { useState } from 'react';
 import Axios from "axios";
+import NavBar from './navbar.js';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomeComponent from './HomeComponent';
+import AboutComponent from './AboutComponent';
+import Layout from './layout'
+
 
 
 function App() {
@@ -36,80 +42,16 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className="customerinfo">
-        <label>username: </label>
-        <input 
-          type="text" 
-          onChange={(event) => {
-            setUsername(event.target.value);
-        }}
-        />
-        <label>first_name: </label>
-        <input
-          type="text" 
-          onChange={(event) => {
-            setFirstName(event.target.value);
-        }}
-        />
-        <label>last_name: </label>
-        <input
-          type="text" 
-          onChange={(event) => {
-            setLastName(event.target.value);
-        }}
-        />
-        <label>address: </label>
-        <input
-          type="text" 
-          onChange={(event) => {
-            setAddress(event.target.value);
-        }}
-        />
-        <label>birthdate: </label>
-        <input 
-        type="date"
-        onChange={(event) => {
-          setBirthdate(event.target.value);
-        }}
-        />
-        <label>rating: </label>
-        <input 
-        type="number"
-        onChange={(event) => {
-          setRating(event.target.value);
-        }}
-        />
-        <label>credit: </label>
-        <input 
-        type="number"
-        onChange={(event) => {
-          setCredit(event.target.value);
-        }}
-        />
-        <button onClick={addCustomer}>Add Customer</button>
-        <button onClick={roleDistribution}>Show Role Distribution</button>
-        <div classname="roles">
-          
-          <table>
-            <tr>
-                <th>Category</th>
-                <th>Total</th>
-              </tr>
-            {roleList.map((val, key) => {
-              return ( 
-                <tr key={key}>
-                    <td>{val.category}</td>
-                    <td>{val.total}</td>
-                </tr>
-              );
-            })}
-          </table>
-        </div>
-        
-        
-      </div>
-    </div>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {/* <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
