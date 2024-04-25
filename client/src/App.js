@@ -6,45 +6,57 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeComponent from './HomeComponent';
 import AboutComponent from './AboutComponent';
 import Layout from './layout'
-
-
+import Views from './Views'
+import Tables from './Tables'
 
 function App() {
 
-  const[username, setUsername] = useState("");
-  const[first_name, setFirstName] = useState("");
-  const[last_name, setLastName] = useState("");
-  const[address, setAddress] = useState("");
-  const[birthdate, setBirthdate] = useState(null);
-  const[rating, setRating] = useState(0);
-  const[credit, setCredit] = useState(0);
+  // const[username, setUsername] = useState("");
+  // const[first_name, setFirstName] = useState("");
+  // const[last_name, setLastName] = useState("");
+  // const[address, setAddress] = useState("");
+  // const[birthdate, setBirthdate] = useState(null);
+  // const[rating, setRating] = useState(0);
+  // const[credit, setCredit] = useState(0);
 
-  const[roleList, setRoleList] = useState([]);
+  // const[roleList, setRoleList] = useState([]);
 
-  const addCustomer = () => {
-    Axios.post("http://localhost:3001/addCustomer", { // change immediately!!!!
-      username: username, 
-      first_name: first_name, 
-      last_name: last_name, 
-      address: address, 
-      birthdate: birthdate, 
-      rating: rating, 
-      credit: credit
-    }).then(() => {
-      console.log("success");
-    });
-  };
+  // const addCustomer = () => {
+  //   Axios.post("http://localhost:3001/addCustomer", { // change immediately!!!!
+  //     username: username, 
+  //     first_name: first_name, 
+  //     last_name: last_name, 
+  //     address: address, 
+  //     birthdate: birthdate, 
+  //     rating: rating, 
+  //     credit: credit
+  //   }).then(() => {
+  //     console.log("success");
+  //   });
+  // };
 
-  const roleDistribution = () => {
-    Axios.get("http://localhost:3001/roleDistribution").then((response) => {
-      setRoleList(response.data);
-    });
-  }
+  // const roleDistribution = () => {
+  //   Axios.get("http://localhost:3001/roleDistribution").then((response) => {
+  //     setRoleList(response.data);
+  //   });
+  // }
 
   return (
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} /> */}
+        </Route>
+        <Route path="/Views" element={<Views />}>
+          {/* <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} /> */}
+        </Route>
+        <Route path="/Tables" element={<Tables />}>
           {/* <Route index element={<Home />} />
           <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />

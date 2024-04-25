@@ -2,13 +2,11 @@ import React from 'react';
 
 const NavBar = () => {
   return (
-    <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', background: 'navy', color: 'white' }}>
+    <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', background: 'black', color: 'white' }}>
       <div>
         <a href="/" style={{ color: 'white', textDecoration: 'none', marginRight: '15px' }}>Home</a>
-        <a href="/about" style={{ color: 'white', textDecoration: 'none' }}>About</a>
-      </div>
-      <div>
-        Contact
+        <a href="/Views" style={{ color: 'white', textDecoration: 'none', marginRight: '15px'}}>Views</a>
+        <a href="/Tables" style={{ color: 'white', textDecoration: 'none', marginRight: '15px' }}>Tables</a>
       </div>
     </nav>
   );

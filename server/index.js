@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "Seafoamgreen3!",
+    password: "MySQL123#",
     database: "drone_dispatch"
 });
 
@@ -434,18 +434,6 @@ app.get("/showEmployees", (req, res) => {
 app.get("/showDronePilots", (req, res) => {
     db.query(
         "SELECT * FROM drone_pilots",
-        (err, result) => {
-            if(err) {
-                console.log(err);
-            } else {
-                res.send(result);
-            }
-        });
-});
-
-app.get("/showStoreWorkers", (req, res) => {
-    db.query(
-        "SELECT * FROM store_workers",
         (err, result) => {
             if(err) {
                 console.log(err);

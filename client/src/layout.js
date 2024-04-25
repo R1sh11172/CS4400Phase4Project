@@ -88,24 +88,7 @@ function Layout() {
           }}
           />
           <button onClick={addCustomer}>Add Customer</button>
-          <button onClick={roleDistribution}>Show Role Distribution</button>
-          <div classname="roles">
-            
-            <table>
-              <tr>
-                  <th>Category</th>
-                  <th>Total</th>
-                </tr>
-              {roleList.map((val, key) => {
-                return ( 
-                  <tr key={key}>
-                      <td>{val.category}</td>
-                      <td>{val.total}</td>
-                  </tr>
-                );
-              })}
-            </table>
-          </div>
+          
           
           
         </div>
