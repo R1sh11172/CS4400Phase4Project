@@ -9,8 +9,30 @@ app.use(express.json());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "MySQL123#",
+    password: "pass1234",
     database: "drone_dispatch"
+});
+
+const proceduresList = [
+    "addCustomer",
+    "addDronePilot",
+    "addProduct",
+    "addDrone",
+    "increaseCustomerCredits",
+    "swapDroneControl",
+    "repairRefuelDrone",
+    "beginOrder",
+    "addOrderLine",
+    "deliverOrder",
+    "cancelOrder",
+    "removeCustomer",
+    "removeDronePilot",
+    "removeProduct",
+    "removeDrone"
+];
+
+app.get("/procedures", (req, res) => {
+    res.json(proceduresList);
 });
 
 // Stored Procedures
@@ -24,17 +46,6 @@ app.post("/addCustomer", (req, res) => {
     const rating = req.body.rating;
     const credit = req.body.credit;
 
-    // db.query(
-    //     "INSERT INTO users (uname, first_name, last_name, address, birthdate) VALUES (?,?,?,?,?)",
-    //     [username, first_name, last_name, address, birthdate],
-    //     (err, result) => {
-    //         if(err) {
-    //             console.log(err);
-    //         } else {
-    //             res.send("Values Inserted");
-    //         }
-    //     }
-    // );
     db.query(
         "CALL add_customer(?,?,?,?,?,?,?)",
         [username, first_name, last_name, address, birthdate, rating, credit],
@@ -61,7 +72,7 @@ app.post("/addDronePilot", (req, res) => {
     const licenseID = req.body.licenseID
     const experience = req.body.experience;
     db.query(
-        "CALL add_drone_pilot(?,?,?,?,?,?,?)",
+        "CALL add_drone_pilot(?,?,?,?,?,?,?,?,?,?)",
         [username, first_name, last_name, address, birthdate, taxID, service, salary, licenseID, experience],
         (err, result) => {
             if(err) {
@@ -96,10 +107,11 @@ app.post("/addDrone", (req, res) => {
     const storeID = req.body.storeID;
     const droneTag = req.body.droneTag;
     const capacity = req.body.capacity;
+    const trips = req.body.trips;
     const pilot = req.body.pilot;
     db.query(
-        "CALL add_drone(?,?,?,?,?)",
-        [storeID, droneTag, capacity, pilot],
+        "CALL add_drone(?,?,?,?, ?)",
+        [storeID, droneTag, capacity, trips, pilot],
         (err, result) => {
             if(err) {
                 console.log(err);
@@ -174,7 +186,7 @@ app.post("/beginOrder", (req, res) => {
     const quantity = req.body.quantity;
 
     db.query(
-        "CALL begin_order(?,?,?,?,?,?,?,?,?)",
+        "CALL begin_order(?,?,?,?,?,?,?,?)",
         [orderId, soldOn, purchasedBy, carrierStore, carrierTag, barcode, price, quantity],
         (err, result) => {
             if(err) {

@@ -1,67 +1,48 @@
 import './App.css';
-import { useState } from 'react';
-import Axios from "axios";
-import NavBar from './navbar.js';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomeComponent from './HomeComponent';
-import AboutComponent from './AboutComponent';
-import Layout from './layout'
-import Views from './Views'
-import Tables from './Tables'
+import Layout from './layout';
+import Views from './Views';
+import Tables from './Tables';
+import Procedures from './Procedures';
+import AddCustomerComponent from './procedures/addCustomer';
+import AddDronePilotComponent from './procedures/addDronePilot';
+import AddProductComponent from './procedures/addProduct';
+import AddDroneComponent from './procedures/addDrone';
+import IncreaseCustomerCreditsComponent from './procedures/increaseCustomerCredits';
+import SwapDroneControlComponent from './procedures/swapDroneControl';
+import RepairRefuelDroneComponent from './procedures/repairRefuelDrone';
+import BeginOrderComponent from './procedures/beginOrder';
+import AddOrderLineComponent from './procedures/addOrderLine';
+import DeliverOrderComponent from './procedures/deliverOrder';
+import CancelOrderComponent from './procedures/cancelOrder';
+import RemoveCustomerComponent from './procedures/removeCustomer';
+import RemoveDronePilotComponent from './procedures/removeDronePilot';
+import RemoveProductComponent from './procedures/removeProduct';
+import RemoveDroneComponent from './procedures/removeDrone';
 
 function App() {
-
-  // const[username, setUsername] = useState("");
-  // const[first_name, setFirstName] = useState("");
-  // const[last_name, setLastName] = useState("");
-  // const[address, setAddress] = useState("");
-  // const[birthdate, setBirthdate] = useState(null);
-  // const[rating, setRating] = useState(0);
-  // const[credit, setCredit] = useState(0);
-
-  // const[roleList, setRoleList] = useState([]);
-
-  // const addCustomer = () => {
-  //   Axios.post("http://localhost:3001/addCustomer", { // change immediately!!!!
-  //     username: username, 
-  //     first_name: first_name, 
-  //     last_name: last_name, 
-  //     address: address, 
-  //     birthdate: birthdate, 
-  //     rating: rating, 
-  //     credit: credit
-  //   }).then(() => {
-  //     console.log("success");
-  //   });
-  // };
-
-  // const roleDistribution = () => {
-  //   Axios.get("http://localhost:3001/roleDistribution").then((response) => {
-  //     setRoleList(response.data);
-  //   });
-  // }
-
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
-        </Route>
-        <Route path="/Views" element={<Views />}>
-          {/* <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
-        </Route>
-        <Route path="/Tables" element={<Tables />}>
-          {/* <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
-        </Route>
+      <Route path="/" element={<Layout />} />
+        <Route path="/Views" element={<Views />} />
+        <Route path="/Tables" element={<Tables />} />
+        <Route path="/Procedures" element={<Procedures />} />
+        <Route path="/procedures/addCustomer" element={<AddCustomerComponent />} />
+        <Route path="/procedures/addDronePilot" element={<AddDronePilotComponent />} />
+        <Route path="/procedures/addProduct" element={<AddProductComponent />} />
+        <Route path="/procedures/addDrone" element={<AddDroneComponent />} />
+        <Route path="/procedures/increaseCustomerCredits" element={<IncreaseCustomerCreditsComponent />} />
+        <Route path="/procedures/swapDroneControl" element={<SwapDroneControlComponent />} />
+        <Route path="/procedures/repairRefuelDrone" element={<RepairRefuelDroneComponent />} />
+        <Route path="/procedures/beginOrder" element={<BeginOrderComponent />} />
+        <Route path="/procedures/addOrderLine" element={<AddOrderLineComponent />} />
+        <Route path="/procedures/deliverOrder" element={<DeliverOrderComponent />} />
+        <Route path="/procedures/cancelOrder" element={<CancelOrderComponent />} />
+        <Route path="/procedures/removeCustomer" element={<RemoveCustomerComponent />} />
+        <Route path="/procedures/removeDronePilot" element={<RemoveDronePilotComponent />} />
+        <Route path="/procedures/removeProduct" element={<RemoveProductComponent />} />
+        <Route path="/procedures/removeDrone" element={<RemoveDroneComponent />} />
       </Routes>
     </BrowserRouter>
   );
