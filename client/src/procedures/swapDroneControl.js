@@ -6,11 +6,17 @@ function SwapDroneControlComponent() {
   const [outgoingPilot, setOutgoingPilot] = useState("");
 
   const swapDroneControl = () => {
+    if (incomingPilot === "" || outgoingPilot === "") {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
+
     Axios.post("http://localhost:3001/swapDroneControl", {
       incomingPilot: incomingPilot,
       outgoingPilot: outgoingPilot
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 

@@ -7,10 +7,15 @@ function AddCustomerComponent() {
   const [last_name, setLastName] = useState("");
   const [address, setAddress] = useState("");
   const [birthdate, setBirthdate] = useState(null);
-  const [rating, setRating] = useState(0);
-  const [credit, setCredit] = useState(0);
+  const [rating, setRating] = useState(null);
+  const [credit, setCredit] = useState(null);
 
   const addCustomer = () => {
+    if (username === "" || first_name === "" || last_name === "" || address === "" || rating === null || credit === null || rating < 1 || rating > 5 || credit < 0) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
+
     Axios.post("http://localhost:3001/addCustomer", {
       username: username,
       first_name: first_name,
@@ -21,6 +26,7 @@ function AddCustomerComponent() {
       credit: credit
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 

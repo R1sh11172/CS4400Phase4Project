@@ -3,15 +3,20 @@ import Axios from "axios";
 
 function BeginOrderComponent() {
   const [orderId, setOrderId] = useState("");
-  const [soldOn, setSoldOn] = useState("");
+  const [soldOn, setSoldOn] = useState(null);
   const [purchasedBy, setPurchasedBy] = useState("");
   const [carrierStore, setCarrierStore] = useState("");
-  const [carrierTag, setCarrierTag] = useState("");
+  const [carrierTag, setCarrierTag] = useState(null);
   const [barcode, setBarcode] = useState("");
-  const [price, setPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(null);
+  const [quantity, setQuantity] = useState(null);
 
   const beginOrder = () => {
+    if (orderId === "" || soldOn === null || purchasedBy === "" || carrierStore === "" || carrierTag === null || barcode === "" || price === null || quantity === null || price < 0 || quantity < 1) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
+
     Axios.post("http://localhost:3001/beginOrder", {
       orderId: orderId,
       soldOn: soldOn,
@@ -23,6 +28,7 @@ function BeginOrderComponent() {
       quantity: quantity
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 
@@ -59,7 +65,7 @@ function BeginOrderComponent() {
         />
         <label>Carrier Tag: </label>
         <input
-          type="text"
+          type="number"
           onChange={(event) => {
             setCarrierTag(event.target.value);
           }}

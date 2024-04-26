@@ -3,14 +3,20 @@ import Axios from "axios";
 
 function RemoveDroneComponent() {
   const [storeID, setStoreID] = useState("");
-  const [droneTag, setDroneTag] = useState("");
+  const [droneTag, setDroneTag] = useState(null);
 
   const removeDrone = () => {
+    if (storeID === "" || droneTag === null) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
+
     Axios.post("http://localhost:3001/removeDrone", {
       storeID: storeID,
       droneTag: droneTag
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 
@@ -26,7 +32,7 @@ function RemoveDroneComponent() {
         />
         <label>Drone Tag: </label>
         <input
-          type="text"
+          type="number"
           onChange={(event) => {
             setDroneTag(event.target.value);
           }}

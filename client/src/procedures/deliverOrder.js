@@ -5,10 +5,15 @@ function DeliverOrderComponent() {
   const [orderId, setOrderId] = useState("");
 
   const deliverOrder = () => {
+    if (orderId === "") {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
     Axios.post("http://localhost:3001/deliverOrder", {
       orderId: orderId
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 

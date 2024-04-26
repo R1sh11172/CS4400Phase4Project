@@ -3,16 +3,22 @@ import Axios from "axios";
 
 function RepairRefuelDroneComponent() {
   const [droneStore, setDroneStore] = useState("");
-  const [droneTag, setDroneTag] = useState("");
-  const [refueledTrips, setRefueledTrips] = useState(0);
+  const [droneTag, setDroneTag] = useState(null);
+  const [refueledTrips, setRefueledTrips] = useState(null);
 
   const repairRefuelDrone = () => {
+    if (droneStore === "" || droneTag === null || refueledTrips === null || refueledTrips < 0) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
+
     Axios.post("http://localhost:3001/repairRefuelDrone", {
       droneStore: droneStore,
       droneTag: droneTag,
       refueledTrips: refueledTrips
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 
@@ -28,7 +34,7 @@ function RepairRefuelDroneComponent() {
         />
         <label>Drone Tag: </label>
         <input
-          type="text"
+          type="number"
           onChange={(event) => {
             setDroneTag(event.target.value);
           }}

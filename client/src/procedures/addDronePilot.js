@@ -8,12 +8,17 @@ function AddDronePilotComponent() {
   const [address, setAddress] = useState("");
   const [birthdate, setBirthdate] = useState(null);
   const [taxID, setTaxID] = useState("");
-  const [service, setService] = useState("");
-  const [salary, setSalary] = useState(0);
+  const [service, setService] = useState(null);
+  const [salary, setSalary] = useState(null);
   const [licenseID, setLicenseID] = useState("");
-  const [experience, setExperience] = useState("");
+  const [experience, setExperience] = useState(null);
 
   const addDronePilot = () => {
+    if (username === "" || first_name === "" || last_name === "" || address === "" || taxID === "" || service === null || salary === null || licenseID === "" || experience === null || service < 0 || salary < 0 || experience < 0) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
+
     Axios.post("http://localhost:3001/addDronePilot", {
       username: username,
       first_name: first_name,
@@ -26,6 +31,7 @@ function AddDronePilotComponent() {
       licenseID: licenseID,
       experience: experience
     }).then(() => {
+      alert("Procedure called");
       console.log("success");
     });
   };
@@ -77,7 +83,7 @@ function AddDronePilotComponent() {
         />
         <label>service: </label>
         <input
-          type="text"
+          type="number"
           onChange={(event) => {
             setService(event.target.value);
           }}
@@ -92,7 +98,7 @@ function AddDronePilotComponent() {
 
         <label>licenseID: </label>
         <input
-        type="number"
+        type="text"
         onChange={(event) => {
             setLicenseID(event.target.value);
         }}

@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import Axios from "axios";
 
 function RemoveProductComponent() {
-  const [barcode, setBarcode] = useState("");
+  const [barcode, setBarcode] = useState(null);
 
   const removeProduct = () => {
+    if (barcode === null) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
     Axios.post("http://localhost:3001/removeProduct", {
       barcode: barcode
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 

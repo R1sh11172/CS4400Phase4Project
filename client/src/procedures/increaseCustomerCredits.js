@@ -3,14 +3,19 @@ import Axios from "axios";
 
 function IncreaseCustomerCreditsComponent() {
   const [username, setUsername] = useState("");
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(null);
 
   const increaseCustomerCredits = () => {
+    if (username === "" || money === null || money < 0) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
     Axios.post("http://localhost:3001/increaseCustomerCredits", {
       username: username,
       money: money
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 

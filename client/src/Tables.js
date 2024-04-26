@@ -170,7 +170,7 @@ function Tables() {
             <Divider />
         </div>
 
-        <button onClick={showDronePilots}>Show Drone Pilot Roster</button>
+        <button onClick={showDronePilots}>Show Drone Pilots</button>
         <div classname="ShowDronePilots">
             <table>
               <tr>

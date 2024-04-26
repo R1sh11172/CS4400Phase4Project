@@ -4,10 +4,14 @@ import Axios from "axios";
 function AddOrderLineComponent() {
   const [orderId, setOrderId] = useState("");
   const [barcode, setBarcode] = useState("");
-  const [price, setPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(null);
+  const [quantity, setQuantity] = useState(null);
 
   const addOrderLine = () => {
+    if (orderId === "" || barcode === "" || price === null || quantity === null || price < 0 || quantity < 1) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
     Axios.post("http://localhost:3001/addOrderLine", {
       orderId: orderId,
       barcode: barcode,
@@ -15,6 +19,7 @@ function AddOrderLineComponent() {
       quantity: quantity
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 

@@ -4,15 +4,21 @@ import Axios from "axios";
 function AddProductComponent() {
   const [barcode, setBarcode] = useState("");
   const [name, setName] = useState("");
-  const [weight, setWeight] = useState(0);
+  const [weight, setWeight] = useState(null);
 
   const addProduct = () => {
+    if (barcode === "" || name === "" || weight === null || weight < 0) {
+      alert("Procedure failed, please insert valid inputs for the fields");
+      return;
+    }
+
     Axios.post("http://localhost:3001/addProduct", {
       barcode: barcode,
       name: name,
       weight: weight
     }).then(() => {
       console.log("success");
+      alert("Procedure called");
     });
   };
 
